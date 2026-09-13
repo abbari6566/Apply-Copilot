@@ -1,26 +1,156 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Page and surface backgrounds */
+  --rgb-background: 246 247 251;
+  --color-background: rgb(var(--rgb-background));
+  --rgb-surface: 255 255 255;
+  --color-surface: rgb(var(--rgb-surface));
+  --rgb-surface-secondary: 249 250 251;
+  --color-surface-secondary: rgb(var(--rgb-surface-secondary));
+  --rgb-surface-tertiary: 242 245 247;
+  --color-surface-tertiary: rgb(var(--rgb-surface-tertiary));
+  --rgb-surface-muted: 244 245 251;
+  --color-surface-muted: rgb(var(--rgb-surface-muted));
+
+  /* Borders */
+  --rgb-border: 231 234 243;
+  --color-border: rgb(var(--rgb-border));
+  --rgb-border-light: 229 231 235;
+  --color-border-light: rgb(var(--rgb-border-light));
+  --rgb-border-muted: 223 225 231;
+  --color-border-muted: rgb(var(--rgb-border-muted));
+
+  /* Text */
+  --rgb-text-primary: 16 24 40;
+  --color-text-primary: rgb(var(--rgb-text-primary));
+  --rgb-text-secondary: 106 114 130;
+  --color-text-secondary: rgb(var(--rgb-text-secondary));
+  --rgb-text-muted: 153 161 175;
+  --color-text-muted: rgb(var(--rgb-text-muted));
+  --rgb-text-dark: 54 65 83;
+  --color-text-dark: rgb(var(--rgb-text-dark));
+  --rgb-text-darker: 54 57 74;
+  --color-text-darker: rgb(var(--rgb-text-darker));
+  --rgb-text-darkest: 17 24 39;
+  --color-text-darkest: rgb(var(--rgb-text-darkest));
+  --rgb-text-black: 19 19 22;
+  --color-text-black: rgb(var(--rgb-text-black));
+  --rgb-text-slate: 39 40 53;
+  --color-text-slate: rgb(var(--rgb-text-slate));
+  --rgb-text-slate-medium: 102 109 128;
+  --color-text-slate-medium: rgb(var(--rgb-text-slate-medium));
+
+  /* Primary accent — purple */
+  --rgb-accent: 124 92 252;
+  --color-accent: rgb(var(--rgb-accent));
+  --rgb-accent-dark: 94 76 255;
+  --color-accent-dark: rgb(var(--rgb-accent-dark));
+  --rgb-accent-light: 243 232 255;
+  --color-accent-light: rgb(var(--rgb-accent-light));
+  --rgb-accent-muted: 250 245 255;
+  --color-accent-muted: rgb(var(--rgb-accent-muted));
+  --rgb-accent-foreground: 255 255 255;
+  --color-accent-foreground: rgb(var(--rgb-accent-foreground));
+
+  /* Success — green */
+  --rgb-success: 16 185 129;
+  --color-success: rgb(var(--rgb-success));
+  --rgb-success-alt: 0 188 125;
+  --color-success-alt: rgb(var(--rgb-success-alt));
+  --rgb-success-dark: 0 122 85;
+  --color-success-dark: rgb(var(--rgb-success-dark));
+  --rgb-success-darker: 0 153 102;
+  --color-success-darker: rgb(var(--rgb-success-darker));
+  --rgb-success-light: 208 250 229;
+  --color-success-light: rgb(var(--rgb-success-light));
+  --rgb-success-lightest: 236 253 245;
+  --color-success-lightest: rgb(var(--rgb-success-lightest));
+  --rgb-success-foreground: 0 122 85;
+  --color-success-foreground: rgb(var(--rgb-success-foreground));
+
+  /* Info — blue */
+  --rgb-info: 97 168 255;
+  --color-info: rgb(var(--rgb-info));
+  --rgb-info-dark: 21 93 252;
+  --color-info-dark: rgb(var(--rgb-info-dark));
+  --rgb-info-medium: 43 127 255;
+  --color-info-medium: rgb(var(--rgb-info-medium));
+  --rgb-info-light: 219 234 254;
+  --color-info-light: rgb(var(--rgb-info-light));
+  --rgb-info-lightest: 239 246 255;
+  --color-info-lightest: rgb(var(--rgb-info-lightest));
+  --rgb-info-foreground: 21 93 252;
+  --color-info-foreground: rgb(var(--rgb-info-foreground));
+  --rgb-info-muted: 148 162 197;
+  --color-info-muted: rgb(var(--rgb-info-muted));
+
+  /* Warning — orange */
+  --rgb-warning: 255 137 4;
+  --color-warning: rgb(var(--rgb-warning));
+  --rgb-warning-foreground: 255 255 255;
+  --color-warning-foreground: rgb(var(--rgb-warning-foreground));
+
+  /* Error — red */
+  --rgb-error: 239 68 68;
+  --color-error: rgb(var(--rgb-error));
+  --rgb-error-foreground: 255 255 255;
+  --color-error-foreground: rgb(var(--rgb-error-foreground));
+
+  /* LinkedIn brand */
+  --rgb-linkedin: 10 102 194;
+  --color-linkedin: rgb(var(--rgb-linkedin));
+  --rgb-linkedin-light: 220 230 241;
+  --color-linkedin-light: rgb(var(--rgb-linkedin-light));
+  --rgb-linkedin-foreground: 255 255 255;
+  --color-linkedin-foreground: rgb(var(--rgb-linkedin-foreground));
+
+  /* Dark overlays */
+  --rgb-overlay: 17 24 39;
+  --color-overlay: rgb(var(--rgb-overlay));
+  --rgb-overlay-dark: 19 19 22;
+  --color-overlay-dark: rgb(var(--rgb-overlay-dark));
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-border);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .auth-provider {
+    @apply flex min-h-12 w-full items-center justify-center gap-3 rounded-md border border-border bg-surface px-4 py-3 text-sm font-medium text-text-primary transition-colors hover:bg-surface-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent disabled:cursor-wait disabled:opacity-60;
+  }
+
+  .landing-primary {
+    @apply inline-flex min-h-10 items-center justify-center rounded-md border border-text-slate-medium/40 bg-gradient-to-b from-text-darker to-text-slate px-4 py-2 font-medium text-accent-foreground shadow-sm transition-colors hover:from-text-dark hover:to-text-darker focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent;
+  }
+
+  .landing-glow {
+    background-color: var(--color-surface);
+    background-image:
+      radial-gradient(ellipse at 91% 8%, color-mix(in srgb, var(--color-info-muted) 28%, transparent), transparent 58%),
+      radial-gradient(ellipse at 65% 0%, color-mix(in srgb, var(--color-info) 15%, transparent), transparent 47%),
+      radial-gradient(ellipse at 37% 0%, color-mix(in srgb, var(--color-accent-light) 80%, transparent), transparent 37%),
+      radial-gradient(ellipse at 54% 110%, color-mix(in srgb, var(--color-info) 23%, transparent), transparent 30%),
+      radial-gradient(ellipse at 76% 95%, color-mix(in srgb, var(--color-accent-light) 88%, transparent), transparent 48%);
+  }
 }

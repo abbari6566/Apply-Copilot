@@ -23,6 +23,14 @@
 # misc
 .DS_Store
 *.pem
+.idea/
+.vscode/
+
+# local agent and session files
+/.agents/
+/.fallow/
+/.tmp/
+/memory.md
 
 # debug
 npm-debug.log*
